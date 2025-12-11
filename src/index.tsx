@@ -217,21 +217,8 @@ app.get('/', (c) => {
                     
                     <div class="hidden md:block">
                         <div class="relative">
-                            <div class="float glass-effect rounded-3xl p-8 text-center">
-                                <div class="space-y-6">
-                                    <div class="bg-white/20 rounded-2xl p-6">
-                                        <i class="fas fa-chart-line text-6xl mb-4"></i>
-                                        <h3 class="text-2xl font-bold">Strategic Analysis</h3>
-                                    </div>
-                                    <div class="bg-white/20 rounded-2xl p-6">
-                                        <i class="fas fa-cloud text-6xl mb-4"></i>
-                                        <h3 class="text-2xl font-bold">Salesforce Excellence</h3>
-                                    </div>
-                                    <div class="bg-white/20 rounded-2xl p-6">
-                                        <i class="fas fa-database text-6xl mb-4"></i>
-                                        <h3 class="text-2xl font-bold">Data-Driven Insights</h3>
-                                    </div>
-                                </div>
+                            <div class="float">
+                                <img src="https://www.genspark.ai/api/files/s/6M7FSqDf" alt="Nuratullahi Ashade-Ogunfuwa" class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
                             </div>
                         </div>
                     </div>
@@ -655,13 +642,13 @@ app.get('/', (c) => {
                         <div class="bg-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
                             <i class="fas fa-tasks text-white text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Requirements Management & Stakeholder Engagement</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Digital Transformation & Solution Architecture</h3>
                         <p class="text-gray-700 mb-6">
-                            Served as Business Analyst for a complex digital transformation initiative involving multiple stakeholder groups. Led workshops, documented requirements, created detailed user stories, and facilitated consensus-building across siloed departments.
+                            Served as <span class="font-bold text-green-700">Project Lead and Solution Architect</span> for a complex digital transformation initiative involving multiple stakeholder groups. Led end-to-end solution design, architecture decisions, requirements workshops, and facilitated consensus-building across siloed departments while ensuring technical feasibility and alignment with business goals.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Requirements</span>
-                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Workshops</span>
+                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Project Leadership</span>
+                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Solution Architecture</span>
                             <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Stakeholder Management</span>
                         </div>
                         <a href="https://docs.google.com/presentation/d/1IqvIK1yudEfpgNedM5FiCZw9FdrCs8v54CH0BWSRgW4/edit?usp=sharing" target="_blank" class="text-green-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
@@ -680,14 +667,14 @@ app.get('/', (c) => {
                         <div class="bg-orange-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
                             <i class="fas fa-database text-white text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Data Analysis & Dashboard Development</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation & Analytics</h3>
                         <p class="text-gray-700 mb-6">
-                            Designed and implemented comprehensive reporting and dashboard solution for executive team needing real-time visibility into business performance. Created custom reports, KPI dashboards, and automated data refresh processes.
+                            Served as <span class="font-bold text-orange-700">Project Lead and Implementation Consultant</span> for comprehensive Salesforce deployment. Led project planning, stakeholder coordination, and technical implementation while designing executive dashboards for real-time business performance visibility. Created custom reports, KPI dashboards, and automated data refresh processes.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Data Analysis</span>
-                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Dashboards</span>
-                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Reporting</span>
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Project Leadership</span>
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Implementation</span>
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Analytics</span>
                         </div>
                         <a href="https://docs.google.com/presentation/d/1wVj-de2i_M8DmOz_muLJxhkGw2mD1bnre0azO6LC9TU/edit?usp=sharing" target="_blank" class="text-orange-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
                             View Case Study <i class="fas fa-arrow-right"></i>
@@ -714,24 +701,30 @@ app.get('/', (c) => {
                     <h3 class="heading-font text-3xl font-bold text-gray-900 mb-8 text-center">Salesforce Certifications</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mx3&oid=00DF0000000gZsu&lastMod=1579892953000" alt="Salesforce Administrator" class="w-full h-auto mb-4">
-                            <p class="font-semibold text-gray-900">Administrator</p>
+                            <img src="https://partner-learning-dev-salesforce-com.translate.goog/resource/blob/1700752449000/a54e2e8e5f1e06ccc9829c5e0ec99e7a4e4bfa25ed37e4bb6833d6d96c64ff51/administrator-badge.png?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" alt="Salesforce Administrator" class="w-full h-auto mb-4" onerror="this.src='https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg'">
+                            <p class="font-semibold text-gray-900 text-sm">Administrator</p>
                         </div>
                         <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5N0d&oid=00DF0000000gZsu&lastMod=1579893246000" alt="Service Cloud Consultant" class="w-full h-auto mb-4">
-                            <p class="font-semibold text-gray-900">Service Cloud Consultant</p>
+                            <img src="https://partner-learning-dev-salesforce-com.translate.goog/resource/blob/1700752453000/6bcb24fdbd1a03ef40e5f3f22f12f7e5a6fb19f0c92f9c5c0c2e754758f6a551/service-cloud-consultant-badge.png?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" alt="Service Cloud Consultant" class="w-full h-auto mb-4" onerror="this.src='https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg'">
+                            <p class="font-semibold text-gray-900 text-sm">Service Cloud Consultant</p>
                         </div>
                         <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="Agentforce Specialist" class="w-full h-auto mb-4">
-                            <p class="font-semibold text-gray-900">Agentforce Specialist</p>
+                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-robot text-white text-4xl"></i>
+                            </div>
+                            <p class="font-semibold text-gray-900 text-sm">Agentforce Specialist</p>
                         </div>
                         <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="AI Associate" class="w-full h-auto mb-4">
-                            <p class="font-semibold text-gray-900">AI Associate</p>
+                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-brain text-white text-4xl"></i>
+                            </div>
+                            <p class="font-semibold text-gray-900 text-sm">AI Associate</p>
                         </div>
                         <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="Salesforce Associate" class="w-full h-auto mb-4">
-                            <p class="font-semibold text-gray-900">Associate</p>
+                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-cyan-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-certificate text-white text-4xl"></i>
+                            </div>
+                            <p class="font-semibold text-gray-900 text-sm">Salesforce Associate</p>
                         </div>
                     </div>
                 </div>
