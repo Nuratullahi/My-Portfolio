@@ -1,12 +1,1262 @@
 import { Hono } from 'hono'
-import { renderer } from './renderer'
+import { serveStatic } from 'hono/cloudflare-workers'
 
 const app = new Hono()
 
-app.use(renderer)
+// Serve static files
+app.use('/static/*', serveStatic({ root: './public' }))
 
+// Home route - Main portfolio page
 app.get('/', (c) => {
-  return c.render(<h1>Hello!</h1>)
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nuratullahi Ashade-Ogunfuwa | Business Analyst & Salesforce Consultant</title>
+        <meta name="description" content="Certified Business Analyst and Salesforce Implementation Consultant specializing in digital transformation, process optimization, and Salesforce solutions.">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+        <style>
+            * {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .heading-font {
+                font-family: 'Playfair Display', serif;
+            }
+            
+            /* Custom animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+            
+            @keyframes gradientShift {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+            
+            .fade-in-up {
+                animation: fadeInUp 0.8s ease-out forwards;
+            }
+            
+            .float {
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            .gradient-bg {
+                background: linear-gradient(-45deg, #0ea5e9, #3b82f6, #8b5cf6, #ec4899);
+                background-size: 400% 400%;
+                animation: gradientShift 15s ease infinite;
+            }
+            
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .service-card {
+                transition: all 0.3s ease;
+            }
+            
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .skill-badge {
+                transition: all 0.3s ease;
+            }
+            
+            .skill-badge:hover {
+                transform: scale(1.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Smooth scroll padding for fixed navbar */
+            section {
+                scroll-margin-top: 80px;
+            }
+            
+            /* Mobile menu transition */
+            .mobile-menu {
+                transition: max-height 0.3s ease-in-out;
+            }
+            
+            /* Project card hover effects */
+            .project-card {
+                transition: all 0.4s ease;
+                overflow: hidden;
+            }
+            
+            .project-card:hover .project-overlay {
+                opacity: 1;
+            }
+            
+            .project-overlay {
+                transition: opacity 0.4s ease;
+            }
+        </style>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'primary': '#0ea5e9',
+                            'secondary': '#3b82f6',
+                            'accent': '#8b5cf6',
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body class="bg-gray-50">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="text-2xl font-bold heading-font">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                            NA
+                        </span>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 transition font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 transition font-medium">About</a>
+                        <a href="#services" class="text-gray-700 hover:text-blue-600 transition font-medium">Services</a>
+                        <a href="#projects" class="text-gray-700 hover:text-blue-600 transition font-medium">Projects</a>
+                        <a href="#skills" class="text-gray-700 hover:text-blue-600 transition font-medium">Skills</a>
+                        <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition font-medium">Testimonials</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact</a>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <a href="#contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition">
+                            Let's Talk
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="mobile-menu md:hidden overflow-hidden max-h-0">
+                    <div class="py-4 space-y-3">
+                        <a href="#home" class="block text-gray-700 hover:text-blue-600 py-2">Home</a>
+                        <a href="#about" class="block text-gray-700 hover:text-blue-600 py-2">About</a>
+                        <a href="#services" class="block text-gray-700 hover:text-blue-600 py-2">Services</a>
+                        <a href="#projects" class="block text-gray-700 hover:text-blue-600 py-2">Projects</a>
+                        <a href="#skills" class="block text-gray-700 hover:text-blue-600 py-2">Skills</a>
+                        <a href="#testimonials" class="block text-gray-700 hover:text-blue-600 py-2">Testimonials</a>
+                        <a href="#contact" class="block text-gray-700 hover:text-blue-600 py-2">Contact</a>
+                        <a href="#contact" class="block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold text-center">
+                            Let's Talk
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="gradient-bg text-white pt-32 pb-20 mt-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <h1 class="heading-font text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                            Transforming Business Challenges into Scalable Salesforce Solutions
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+                            I'm <span class="font-bold">Nuratullahi Ashade-Ogunfuwa</span>, a Certified Business Analyst and Salesforce Implementation Consultant who bridges the gap between business needs and technology solutions.
+                        </p>
+                        <p class="text-lg mb-10 text-white/80">
+                            With over 4 years of experience driving digital transformation, I help organizations optimize processes, enhance user adoption, and unlock the full potential of their Salesforce ecosystem.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#contact" class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                                Let's Discuss Your Project
+                            </a>
+                            <a href="#projects" class="glass-effect text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <div class="relative">
+                            <div class="float glass-effect rounded-3xl p-8 text-center">
+                                <div class="space-y-6">
+                                    <div class="bg-white/20 rounded-2xl p-6">
+                                        <i class="fas fa-chart-line text-6xl mb-4"></i>
+                                        <h3 class="text-2xl font-bold">Strategic Analysis</h3>
+                                    </div>
+                                    <div class="bg-white/20 rounded-2xl p-6">
+                                        <i class="fas fa-cloud text-6xl mb-4"></i>
+                                        <h3 class="text-2xl font-bold">Salesforce Excellence</h3>
+                                    </div>
+                                    <div class="bg-white/20 rounded-2xl p-6">
+                                        <i class="fas fa-database text-6xl mb-4"></i>
+                                        <h3 class="text-2xl font-bold">Data-Driven Insights</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Value Proposition Pills -->
+                <div class="grid md:grid-cols-3 gap-6 mt-16">
+                    <div class="glass-effect rounded-2xl p-6 text-center">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold mb-2">Strategic Business Analysis</h3>
+                        <p class="text-white/80">I dive deep into understanding your business operations, identifying inefficiencies, and translating complex needs into actionable solutions.</p>
+                    </div>
+                    <div class="glass-effect rounded-2xl p-6 text-center">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="text-xl font-bold mb-2">Salesforce Implementation Excellence</h3>
+                        <p class="text-white/80">Certified Salesforce Administrator and Service Cloud Consultant delivering optimized, automated workflows that drive productivity.</p>
+                    </div>
+                    <div class="glass-effect rounded-2xl p-6 text-center">
+                        <div class="text-5xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold mb-2">Data-Driven Decision Making</h3>
+                        <p class="text-white/80">Leveraging data analysis, reporting, and dashboards to provide insights that empower informed decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        Where Business Strategy Meets <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Technical Execution</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        I'm a problem-solver at heart, passionate about helping organizations navigate their digital transformation journey with confidence and clarity.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8">
+                        <h3 class="heading-font text-3xl font-bold mb-6 text-gray-900">My Story</h3>
+                        <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                            <p>
+                                My journey into Business Analysis and Salesforce consulting began with a fundamental question: <span class="font-semibold text-blue-600">How can technology truly serve business needs rather than complicate them?</span>
+                            </p>
+                            <p>
+                                Starting my career managing operations at D'light Fashion Hub, I discovered my talent for identifying process inefficiencies and implementing data-driven solutions that delivered measurable results. This experience ignited my passion for business optimization.
+                            </p>
+                            <p>
+                                Over the past five years, I've had the privilege of working across diverse industries—from fashion retail to academic research, basketball operations to cloud consulting—each experience sharpening my ability to adapt, analyze, and deliver solutions that matter.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <h3 class="heading-font text-3xl font-bold mb-6 text-gray-900">What Drives Me</h3>
+                        <div class="bg-white border-l-4 border-blue-600 rounded-lg p-6 shadow-lg">
+                            <div class="flex items-start gap-4">
+                                <div class="text-3xl">🔍</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Curiosity & Analysis</h4>
+                                    <p class="text-gray-700">I'm energized by complex business challenges. Give me a tangled process, and I'll uncover the root cause and design a better future state.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border-l-4 border-purple-600 rounded-lg p-6 shadow-lg">
+                            <div class="flex items-start gap-4">
+                                <div class="text-3xl">🤝</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Stakeholder Empowerment</h4>
+                                    <p class="text-gray-700">Great solutions emerge from meaningful collaboration. I invest time in understanding perspectives and ensuring every voice is heard.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border-l-4 border-blue-600 rounded-lg p-6 shadow-lg">
+                            <div class="flex items-start gap-4">
+                                <div class="text-3xl">📈</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Measurable Impact</h4>
+                                    <p class="text-gray-700">Every project is guided by one principle: create tangible, measurable value that moves the needle.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border-l-4 border-purple-600 rounded-lg p-6 shadow-lg">
+                            <div class="flex items-start gap-4">
+                                <div class="text-3xl">🎓</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Continuous Growth</h4>
+                                    <p class="text-gray-700">Constantly expanding my knowledge—multiple Salesforce certifications and staying current with Agile methodologies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- My Approach -->
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white">
+                    <h3 class="heading-font text-4xl font-bold mb-8 text-center">My Approach</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-ear-listen text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Listen First</h4>
+                            <p class="text-white/90">Deeply understand your business context and goals before proposing solutions</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Collaborate Throughout</h4>
+                            <p class="text-white/90">Maintain transparent communication with all stakeholders</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-award text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Deliver Quality</h4>
+                            <p class="text-white/90">Ensure solutions are scalable, user-friendly, and aligned with best practices</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-hands-helping text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Support Beyond</h4>
+                            <p class="text-white/90">Provide training, documentation, and ongoing support for long-term success</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        Comprehensive Solutions for Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Business Needs</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        End-to-end support for organizations seeking to optimize business processes and maximize Salesforce investment
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-clipboard-list text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Business Analysis & Requirements Management</h3>
+                        <p class="text-gray-600 mb-6">
+                            Comprehensive requirements elicitation, process mapping, and gap analysis to ensure crystal-clear project direction.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Requirements Elicitation & Documentation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>User Story Development</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Process Mapping (AS-IS/TO-BE)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Gap Analysis & Feasibility Studies</span>
+                            </li>
+                        </ul>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-blue-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-blue-800">Reduced development rework, enhanced stakeholder alignment, and faster time-to-market</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-cloud text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation & Configuration</h3>
+                        <p class="text-gray-600 mb-6">
+                            Design and configure Sales Cloud and Service Cloud environments tailored to your business processes.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Salesforce Setup & Configuration</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Workflow Automation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Custom Object & Field Creation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Lightning Experience Optimization</span>
+                            </li>
+                        </ul>
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-purple-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-purple-800">30%+ improvement in operational efficiency and enhanced data integrity</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-cogs text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">CRM Optimization & Process Automation</h3>
+                        <p class="text-gray-600 mb-6">
+                            Comprehensive CRM health checks and automation strategies to maximize ROI from your Salesforce investment.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>CRM Health Checks</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Process Streamlining</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Automation Strategy</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Report & Dashboard Development</span>
+                            </li>
+                        </ul>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-blue-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-blue-800">25%+ increase in productivity and higher user adoption rates</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-check-double text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">UAT & Quality Assurance</h3>
+                        <p class="text-gray-600 mb-6">
+                            Rigorous testing strategies to ensure solutions meet business requirements before go-live.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>UAT Strategy & Planning</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Test Case Development</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Defect Tracking & Management</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Post-Deployment Validation</span>
+                            </li>
+                        </ul>
+                        <div class="bg-green-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-green-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-green-800">Reduced post-deployment issues and smoother deployments</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Training & User Adoption Support</h3>
+                        <p class="text-gray-600 mb-6">
+                            Custom training materials and adoption strategies to ensure your team leverages Salesforce effectively.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Custom Training Materials</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Live Training Sessions</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>User Adoption Strategy</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Documentation & Knowledge Base</span>
+                            </li>
+                        </ul>
+                        <div class="bg-orange-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-orange-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-orange-800">40%+ increase in user engagement and system utilization</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-users-cog text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Stakeholder Management & Communication</h3>
+                        <p class="text-gray-600 mb-6">
+                            Expert facilitation, conflict resolution, and executive presentations for complex projects.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-pink-600 mt-1"></i>
+                                <span>Stakeholder Mapping & Analysis</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-pink-600 mt-1"></i>
+                                <span>Workshop Facilitation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-pink-600 mt-1"></i>
+                                <span>Status Reporting</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-pink-600 mt-1"></i>
+                                <span>Executive Presentations</span>
+                            </li>
+                        </ul>
+                        <div class="bg-pink-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-pink-900 mb-2">Outcomes You Can Expect:</p>
+                            <p class="text-sm text-pink-800">Aligned expectations and increased executive sponsorship</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        Real Projects, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Real Results</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        A glimpse into how I've helped organizations transform their operations through strategic business analysis and Salesforce implementation
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 shadow-lg relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 opacity-0 group-hover:opacity-90 transition-opacity project-overlay flex items-center justify-center">
+                            <a href="https://docs.google.com/presentation/d/1DQLZM43RvUPgk5ziueUdZVu8zXYzgGRHbDGslxf7TSQ/edit?usp=sharing" target="_blank" class="text-white text-2xl font-bold flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Case Study
+                            </a>
+                        </div>
+                        <div class="bg-blue-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-project-diagram text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation Project</h3>
+                        <p class="text-gray-700 mb-6">
+                            Led comprehensive Salesforce Sales Cloud implementation for a growing organization, conducting requirements gathering, stakeholder workshops, and UAT coordination. Delivered automated workflows that improved operational efficiency by 30%.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Salesforce</span>
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Business Analysis</span>
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">UAT</span>
+                        </div>
+                        <a href="https://docs.google.com/presentation/d/1DQLZM43RvUPgk5ziueUdZVu8zXYzgGRHbDGslxf7TSQ/edit?usp=sharing" target="_blank" class="text-blue-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
+                            View Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 shadow-lg relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 opacity-0 group-hover:opacity-90 transition-opacity project-overlay flex items-center justify-center">
+                            <a href="https://docs.google.com/presentation/d/1eLN1_S1SUZhWtfj5dq10BFWI0N17c-dBE_dc_21AGFE/edit?usp=sharing" target="_blank" class="text-white text-2xl font-bold flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Case Study
+                            </a>
+                        </div>
+                        <div class="bg-purple-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">CRM Optimization & Automation</h3>
+                        <p class="text-gray-700 mb-6">
+                            Conducted comprehensive CRM health check and process optimization for an organization struggling with low user adoption. Redesigned workflows, implemented automation, and delivered training that resulted in 40% increase in user engagement.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Process Optimization</span>
+                            <span class="bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Automation</span>
+                            <span class="bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Training</span>
+                        </div>
+                        <a href="https://docs.google.com/presentation/d/1eLN1_S1SUZhWtfj5dq10BFWI0N17c-dBE_dc_21AGFE/edit?usp=sharing" target="_blank" class="text-purple-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
+                            View Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 shadow-lg relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-600 opacity-0 group-hover:opacity-90 transition-opacity project-overlay flex items-center justify-center">
+                            <a href="https://docs.google.com/presentation/d/1IqvIK1yudEfpgNedM5FiCZw9FdrCs8v54CH0BWSRgW4/edit?usp=sharing" target="_blank" class="text-white text-2xl font-bold flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Case Study
+                            </a>
+                        </div>
+                        <div class="bg-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-tasks text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Requirements Management & Stakeholder Engagement</h3>
+                        <p class="text-gray-700 mb-6">
+                            Served as Business Analyst for a complex digital transformation initiative involving multiple stakeholder groups. Led workshops, documented requirements, created detailed user stories, and facilitated consensus-building across siloed departments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Requirements</span>
+                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Workshops</span>
+                            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Stakeholder Management</span>
+                        </div>
+                        <a href="https://docs.google.com/presentation/d/1IqvIK1yudEfpgNedM5FiCZw9FdrCs8v54CH0BWSRgW4/edit?usp=sharing" target="_blank" class="text-green-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
+                            View Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 shadow-lg relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-600 to-red-600 opacity-0 group-hover:opacity-90 transition-opacity project-overlay flex items-center justify-center">
+                            <a href="https://docs.google.com/presentation/d/1wVj-de2i_M8DmOz_muLJxhkGw2mD1bnre0azO6LC9TU/edit?usp=sharing" target="_blank" class="text-white text-2xl font-bold flex items-center gap-2">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Case Study
+                            </a>
+                        </div>
+                        <div class="bg-orange-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+                            <i class="fas fa-database text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Data Analysis & Dashboard Development</h3>
+                        <p class="text-gray-700 mb-6">
+                            Designed and implemented comprehensive reporting and dashboard solution for executive team needing real-time visibility into business performance. Created custom reports, KPI dashboards, and automated data refresh processes.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Data Analysis</span>
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Dashboards</span>
+                            <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Reporting</span>
+                        </div>
+                        <a href="https://docs.google.com/presentation/d/1wVj-de2i_M8DmOz_muLJxhkGw2mD1bnre0azO6LC9TU/edit?usp=sharing" target="_blank" class="text-orange-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
+                            View Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        A Comprehensive Toolkit for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Business & Technology</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        My expertise spans business analysis methodologies, Salesforce administration, data analysis, and stakeholder management
+                    </p>
+                </div>
+                
+                <!-- Salesforce Certifications -->
+                <div class="mb-16">
+                    <h3 class="heading-font text-3xl font-bold text-gray-900 mb-8 text-center">Salesforce Certifications</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
+                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mx3&oid=00DF0000000gZsu&lastMod=1579892953000" alt="Salesforce Administrator" class="w-full h-auto mb-4">
+                            <p class="font-semibold text-gray-900">Administrator</p>
+                        </div>
+                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
+                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5N0d&oid=00DF0000000gZsu&lastMod=1579893246000" alt="Service Cloud Consultant" class="w-full h-auto mb-4">
+                            <p class="font-semibold text-gray-900">Service Cloud Consultant</p>
+                        </div>
+                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
+                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="Agentforce Specialist" class="w-full h-auto mb-4">
+                            <p class="font-semibold text-gray-900">Agentforce Specialist</p>
+                        </div>
+                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
+                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="AI Associate" class="w-full h-auto mb-4">
+                            <p class="font-semibold text-gray-900">AI Associate</p>
+                        </div>
+                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
+                            <img src="https://drm--c.na114.content.force.com/servlet/servlet.ImageServer?id=0153k00000A5Mxd&oid=00DF0000000gZsu&lastMod=1579892981000" alt="Salesforce Associate" class="w-full h-auto mb-4">
+                            <p class="font-semibold text-gray-900">Associate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Core Competencies -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Business Analysis -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">🎯</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Business Analysis</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Requirements Management</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Process Mapping (AS-IS/TO-BE)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Gap Analysis</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Stakeholder Engagement</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>User Stories & Use Cases</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-600 mt-1"></i>
+                                <span>Agile & Scrum</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Salesforce Technical -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">⚙️</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Salesforce Skills</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Sales Cloud & Service Cloud</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Flow Builder & Process Builder</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Lightning Experience</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>User & Permission Management</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Custom Objects & Fields</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-purple-600 mt-1"></i>
+                                <span>Reports & Dashboards</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Data Analysis -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">📊</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Data Analysis</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Microsoft Excel (Advanced)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Data Visualization</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>KPI Tracking</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Trend Analysis</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Data Quality Management</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span>Executive Reporting</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Tools & Soft Skills -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">🛠️</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Tools & Soft Skills</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>JIRA & Confluence</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Visio, Miro, Draw.io</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Microsoft Office Suite</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Excellent Communication</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Problem Solving</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span>Team Collaboration</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        What Clients & Colleagues <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Say</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        The greatest measure of success is what those I've worked with have experienced
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center gap-2 mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            "Nuratullahi demonstrated exceptional analytical skills and attention to detail throughout our Salesforce implementation. Her ability to translate complex business requirements into clear, actionable user stories made the entire development process smoother. She was instrumental in achieving a 30% improvement in our administrative efficiency."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl">
+                                I
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Ibhade Ahusimenre</p>
+                                <p class="text-gray-600">Project Stakeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center gap-2 mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            "Working with Nuratullahi was a game-changer for our operations. Her automated email campaigns not only saved us countless hours but also significantly improved our client engagement. Her strategic thinking and hands-on approach made a real difference to our bottom line."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl">
+                                T
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">The Ryve</p>
+                                <p class="text-gray-600">Business Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center gap-2 mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            "Nuratullahi has a rare combination of technical Salesforce knowledge and business acumen. She doesn't just implement solutions—she takes time to understand the 'why' behind business needs and delivers solutions that truly align with organizational goals. Her stakeholder management skills are excellent."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-green-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl">
+                                H
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">HLM GLAMOUR</p>
+                                <p class="text-gray-600">Business Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center gap-2 mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            "I had the pleasure of training alongside Nuratullahi during our Business Analyst program. Her collaborative spirit, problem-solving abilities, and dedication to mastering both business analysis techniques and Salesforce technical skills were impressive. She's someone any organization would be fortunate to have on their team."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-orange-600 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl">
+                                O
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Olajumoke Ajenifuja</p>
+                                <p class="text-gray-600">Fellow Business Analyst</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
+                        Ready to Transform Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Business Processes?</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Whether you're implementing Salesforce for the first time or need expert business analysis, I'm here to help
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="heading-font text-3xl font-bold text-gray-900 mb-8">How We Can Work Together</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-4xl">📞</div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Initial Consultation (Free)</h4>
+                                        <p class="text-gray-700 mb-4">
+                                            Let's start with a conversation. I offer a complimentary 30-minute consultation to understand your challenges and explore collaboration.
+                                        </p>
+                                        <a href="https://calendly.com/nuratullahi-ao/30min" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-blue-700 transition">
+                                            Book Consultation
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-4xl">📋</div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Project-Based Engagement</h4>
+                                        <p class="text-gray-700">
+                                            Need support for a specific initiative? I offer project-based consulting for Salesforce implementations, process optimization, and UAT coordination.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-4xl">🤝</div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Contract & Ongoing Support</h4>
+                                        <p class="text-gray-700">
+                                            Looking for extended support? I provide contract-based business analysis and Salesforce administration services.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="flex items-start gap-4">
+                                    <div class="text-4xl">🎓</div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Training & Workshops</h4>
+                                        <p class="text-gray-700">
+                                            Want to upskill your team? I deliver customized training on Salesforce best practices and business analysis techniques.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+                            <h4 class="text-2xl font-bold mb-4">Contact Information</h4>
+                            <div class="space-y-3">
+                                <p class="flex items-center gap-3">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                    <a href="mailto:nuratullahi.ao@gmail.com" class="hover:underline">nuratullahi.ao@gmail.com</a>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                    Lagos State, Nigeria (Remote globally)
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                    <a href="https://www.linkedin.com/in/nuratullahi-ashade-ogunfuwa/" target="_blank" class="hover:underline">LinkedIn Profile</a>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                    <a href="https://x.com/nuratullahi_ao" target="_blank" class="hover:underline">@nuratullahi_ao</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl">
+                        <h3 class="heading-font text-3xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="John Doe">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
+                                <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Company/Organization</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Company">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">How Can I Help You? *</label>
+                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                    <option value="">Select a service</option>
+                                    <option value="salesforce">Salesforce Implementation</option>
+                                    <option value="business-analysis">Business Analysis</option>
+                                    <option value="optimization">Process Optimization</option>
+                                    <option value="training">Training</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Project Details *</label>
+                                <textarea required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Timeline</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="bg-white rounded-3xl p-8 md:p-12">
+                    <h3 class="heading-font text-4xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Do you work with clients outside Nigeria?</h4>
+                            <p class="text-gray-700">Absolutely! I work with clients globally and am experienced in remote collaboration using video conferencing and cloud-based platforms.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">What industries do you specialize in?</h4>
+                            <p class="text-gray-700">I've worked across fashion retail, sports operations, academic research, and cloud consulting. My skills are transferable across industries.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">How do you charge for your services?</h4>
+                            <p class="text-gray-700">Pricing depends on project scope and complexity. I offer project-based fees, hourly rates, and contract arrangements. I'll provide a transparent quote after understanding your needs.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Can you help with an existing Salesforce instance?</h4>
+                            <p class="text-gray-700">Yes! CRM optimization is one of my core services. I conduct health checks and implement improvements to maximize your ROI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="heading-font text-2xl font-bold mb-4">Nuratullahi Ashade-Ogunfuwa</h3>
+                        <p class="text-gray-400">
+                            Certified Business Analyst & Salesforce Implementation Consultant
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                        <div class="space-y-2">
+                            <a href="#home" class="block text-gray-400 hover:text-white transition">Home</a>
+                            <a href="#about" class="block text-gray-400 hover:text-white transition">About</a>
+                            <a href="#services" class="block text-gray-400 hover:text-white transition">Services</a>
+                            <a href="#projects" class="block text-gray-400 hover:text-white transition">Projects</a>
+                            <a href="#contact" class="block text-gray-400 hover:text-white transition">Contact</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Connect With Me</h4>
+                        <div class="flex gap-4 text-2xl">
+                            <a href="https://www.linkedin.com/in/nuratullahi-ashade-ogunfuwa/" target="_blank" class="text-gray-400 hover:text-blue-500 transition">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://x.com/nuratullahi_ao" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="mailto:nuratullahi.ao@gmail.com" class="text-gray-400 hover:text-red-500 transition">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 Nuratullahi Ashade-Ogunfuwa. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenu.style.maxHeight) {
+                    mobileMenu.style.maxHeight = null;
+                } else {
+                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.maxHeight = null;
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you shortly.');
+                contactForm.reset();
+            });
+            
+            // Smooth scroll with offset for fixed navbar
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = target.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.service-card, .project-card').forEach((el) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        </script>
+    </body>
+    </html>
+  `)
 })
 
 export default app
