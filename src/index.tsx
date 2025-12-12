@@ -856,7 +856,7 @@ app.get('/', (c) => {
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">How Can I Help You? *</label>
-                                <select name="entry.1048710009" id="contact-service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                <select name="entry.2061567330" id="contact-service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                     <option value="">Select a service</option>
                                     <option value="Salesforce Implementation">Salesforce Implementation</option>
                                     <option value="Business Analysis">Business Analysis</option>
@@ -868,12 +868,12 @@ app.get('/', (c) => {
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Project Details *</label>
-                                <textarea name="entry.490743651" id="contact-details" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
+                                <textarea name="entry.1048710009" id="contact-details" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Timeline</label>
-                                <input type="text" name="entry.2061567330" id="contact-timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
+                                <input type="text" name="entry.490743651" id="contact-timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
                             </div>
                             
                             <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
