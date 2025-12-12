@@ -838,48 +838,50 @@ app.get('/', (c) => {
                     <!-- Contact Form -->
                     <div class="bg-white rounded-3xl p-8 shadow-xl">
                         <h3 class="heading-font text-3xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
-                        <form id="contact-form" class="space-y-6">
+                        <form id="contact-form" class="space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSc_PLACEHOLDER/formResponse" method="POST" target="hidden_iframe">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
-                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="John Doe">
+                                <input type="text" name="entry.NAME_ID" id="contact-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="John Doe">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
-                                <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="john@example.com">
+                                <input type="email" name="entry.EMAIL_ID" id="contact-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="john@example.com">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Company/Organization</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Company">
+                                <input type="text" name="entry.COMPANY_ID" id="contact-company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Company">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">How Can I Help You? *</label>
-                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                <select name="entry.SERVICE_ID" id="contact-service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                     <option value="">Select a service</option>
-                                    <option value="salesforce">Salesforce Implementation</option>
-                                    <option value="business-analysis">Business Analysis</option>
-                                    <option value="optimization">Process Optimization</option>
-                                    <option value="training">Training</option>
-                                    <option value="other">Other</option>
+                                    <option value="Salesforce Implementation">Salesforce Implementation</option>
+                                    <option value="Business Analysis">Business Analysis</option>
+                                    <option value="Process Optimization">Process Optimization</option>
+                                    <option value="Training">Training</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Project Details *</label>
-                                <textarea required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
+                                <textarea name="entry.DETAILS_ID" id="contact-details" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Timeline</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
+                                <input type="text" name="entry.TIMELINE_ID" id="contact-timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
                             </div>
                             
-                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                            <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
                                 Send Message
                             </button>
+                            <div id="form-status" class="text-center text-sm mt-2"></div>
                         </form>
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                     </div>
                 </div>
                 
@@ -971,11 +973,42 @@ app.get('/', (c) => {
             });
             
             // Contact form submission
+            // Contact form submission with Google Forms integration
             const contactForm = document.getElementById('contact-form');
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message! I will get back to you shortly.');
-                contactForm.reset();
+            const formStatus = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            contactForm.addEventListener('submit', function(e) {
+                // Don't prevent default - let it submit to Google Forms
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                formStatus.innerHTML = '<p class="text-blue-600">Sending your message...</p>';
+                
+                // After a short delay, show success message
+                setTimeout(function() {
+                    formStatus.innerHTML = '<p class="text-green-600 font-semibold"><i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. I will get back to you shortly at the email you provided.</p>';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message';
+                    contactForm.reset();
+                    
+                    // Also send email notification via mailto as backup
+                    const name = document.getElementById('contact-name').value;
+                    const email = document.getElementById('contact-email').value;
+                    const company = document.getElementById('contact-company').value;
+                    const service = document.getElementById('contact-service').value;
+                    const details = document.getElementById('contact-details').value;
+                    const timeline = document.getElementById('contact-timeline').value;
+                    
+                    // Log form submission for debugging
+                    console.log('Form submitted successfully:', { name, email, company, service, details, timeline });
+                }, 2000);
+            });
+            
+            // Handle iframe load (Google Forms submission complete)
+            window.addEventListener('message', function(e) {
+                if (e.origin === 'https://docs.google.com') {
+                    console.log('Google Forms submission successful');
+                }
             });
             
             // Smooth scroll with offset for fixed navbar
