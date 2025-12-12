@@ -838,25 +838,25 @@ app.get('/', (c) => {
                     <!-- Contact Form -->
                     <div class="bg-white rounded-3xl p-8 shadow-xl">
                         <h3 class="heading-font text-3xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
-                        <form id="contact-form" class="space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSc_PLACEHOLDER/formResponse" method="POST" target="hidden_iframe">
+                        <form id="contact-form" class="space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSe9CnQCL83y8d-X472wNDLh2svLZFj8K-0p1KSmzJ031Z3q7g/formResponse" method="POST" target="hidden_iframe">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
-                                <input type="text" name="entry.NAME_ID" id="contact-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="John Doe">
+                                <input type="text" name="entry.562924945" id="contact-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="John Doe">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
-                                <input type="email" name="entry.EMAIL_ID" id="contact-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="john@example.com">
+                                <input type="email" name="entry.292297227" id="contact-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="john@example.com">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Company/Organization</label>
-                                <input type="text" name="entry.COMPANY_ID" id="contact-company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Company">
+                                <input type="text" name="entry.350677298" id="contact-company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Company">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">How Can I Help You? *</label>
-                                <select name="entry.SERVICE_ID" id="contact-service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                <select name="entry.1048710009" id="contact-service" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                                     <option value="">Select a service</option>
                                     <option value="Salesforce Implementation">Salesforce Implementation</option>
                                     <option value="Business Analysis">Business Analysis</option>
@@ -868,12 +868,12 @@ app.get('/', (c) => {
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Project Details *</label>
-                                <textarea name="entry.DETAILS_ID" id="contact-details" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
+                                <textarea name="entry.490743651" id="contact-details" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Tell me about your project..."></textarea>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Timeline</label>
-                                <input type="text" name="entry.TIMELINE_ID" id="contact-timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
+                                <input type="text" name="entry.2061567330" id="contact-timeline" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="When do you need to start?">
                             </div>
                             
                             <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
