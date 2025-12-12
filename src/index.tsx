@@ -216,7 +216,7 @@ app.get('/', (c) => {
                     <div class="flex justify-center items-center">
                         <div class="relative w-full max-w-lg">
                             <div class="float">
-                                <img src="https://www.genspark.ai/api/files/s/t4zBkd5w" alt="Nuratullahi Ashade-Ogunfuwa - Business Analyst & Salesforce Consultant" class="rounded-3xl shadow-2xl w-full h-auto object-cover" style="display: block; max-height: 600px;">
+                                <img src="https://drive.google.com/uc?export=view&id=1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm" alt="Nuratullahi Ashade-Ogunfuwa - Business Analyst & Salesforce Consultant" class="rounded-3xl shadow-2xl w-full h-auto object-cover" style="display: block !important; max-height: 600px;" crossorigin="anonymous" loading="eager">
                             </div>
                         </div>
                     </div>
@@ -564,7 +564,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <img src="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Professional Muslim Woman in Pink Hijab Working on Laptop" class="w-full h-48 object-cover rounded-2xl mb-6" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=400&fit=crop'">
+                        <img src="https://lh3.googleusercontent.com/d/1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm" alt="Professional Muslim Woman Working on Salesforce Project" class="w-full h-48 object-cover rounded-2xl mb-6" style="display: block !important;" crossorigin="anonymous" loading="eager" onerror="this.src='https://drive.google.com/uc?export=view&id=1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm'">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation Project</h3>
                         <p class="text-gray-700 mb-6">
                             Led comprehensive Salesforce Sales Cloud implementation for a growing organization, conducting requirements gathering, stakeholder workshops, and UAT coordination. Delivered automated workflows that improved operational efficiency by 30%.
