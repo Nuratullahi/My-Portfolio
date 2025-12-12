@@ -213,10 +213,10 @@ app.get('/', (c) => {
                         </div>
                     </div>
                     
-                    <div class="hidden md:block">
-                        <div class="relative">
+                    <div class="flex justify-center items-center">
+                        <div class="relative w-full max-w-lg">
                             <div class="float">
-                                <img src="https://www.genspark.ai/api/files/s/t4zBkd5w" alt="Nuratullahi Ashade-Ogunfuwa" class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                                <img src="https://www.genspark.ai/api/files/s/t4zBkd5w" alt="Nuratullahi Ashade-Ogunfuwa - Business Analyst & Salesforce Consultant" class="rounded-3xl shadow-2xl w-full h-auto object-cover" style="display: block; max-height: 600px;">
                             </div>
                         </div>
                     </div>
@@ -564,7 +564,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop" alt="Salesforce Implementation" class="w-full h-48 object-cover rounded-2xl mb-6">
+                        <img src="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Professional Muslim Woman in Pink Hijab Working on Laptop" class="w-full h-48 object-cover rounded-2xl mb-6" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=400&fit=crop'">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation Project</h3>
                         <p class="text-gray-700 mb-6">
                             Led comprehensive Salesforce Sales Cloud implementation for a growing organization, conducting requirements gathering, stakeholder workshops, and UAT coordination. Delivered automated workflows that improved operational efficiency by 30%.
