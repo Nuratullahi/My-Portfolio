@@ -215,9 +215,7 @@ app.get('/', (c) => {
                     
                     <div class="flex justify-center items-center">
                         <div class="relative w-full max-w-lg">
-                            <div class="float">
-                                <img src="https://drive.google.com/uc?export=view&id=1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm" alt="Nuratullahi Ashade-Ogunfuwa - Business Analyst & Salesforce Consultant" class="rounded-3xl shadow-2xl w-full h-auto object-cover" style="display: block !important; max-height: 600px;" crossorigin="anonymous" loading="eager">
-                            </div>
+                            <img src="https://lh3.googleusercontent.com/d/1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm=w800" alt="Nuratullahi Ashade-Ogunfuwa - Business Analyst & Salesforce Consultant" class="rounded-3xl shadow-2xl w-full h-auto object-cover float" style="display: block !important; visibility: visible !important; opacity: 1 !important; max-height: 600px;" onload="this.style.display='block'" onerror="this.src='https://drive.google.com/uc?export=view&id=1wxqhN465G1c2NZNl3nzLmKANBIaaJNDm'; this.style.display='block';">
                         </div>
                     </div>
                 </div>
