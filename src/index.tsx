@@ -156,7 +156,6 @@ app.get('/', (c) => {
                         <a href="#about" class="text-gray-700 hover:text-blue-600 transition font-medium">About</a>
                         <a href="#services" class="text-gray-700 hover:text-blue-600 transition font-medium">Services</a>
                         <a href="#projects" class="text-gray-700 hover:text-blue-600 transition font-medium">Projects</a>
-                        <a href="#skills" class="text-gray-700 hover:text-blue-600 transition font-medium">Skills</a>
                         <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition font-medium">Testimonials</a>
                         <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact</a>
                     </div>
@@ -180,7 +179,6 @@ app.get('/', (c) => {
                         <a href="#about" class="block text-gray-700 hover:text-blue-600 py-2">About</a>
                         <a href="#services" class="block text-gray-700 hover:text-blue-600 py-2">Services</a>
                         <a href="#projects" class="block text-gray-700 hover:text-blue-600 py-2">Projects</a>
-                        <a href="#skills" class="block text-gray-700 hover:text-blue-600 py-2">Skills</a>
                         <a href="#testimonials" class="block text-gray-700 hover:text-blue-600 py-2">Testimonials</a>
                         <a href="#contact" class="block text-gray-700 hover:text-blue-600 py-2">Contact</a>
                         <a href="#contact" class="block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold text-center">
@@ -203,7 +201,7 @@ app.get('/', (c) => {
                             I'm <span class="font-bold">Nuratullahi Ashade-Ogunfuwa</span>, a Certified Business Analyst and Salesforce Implementation Consultant who bridges the gap between business needs and technology solutions.
                         </p>
                         <p class="text-lg mb-10 text-white/80">
-                            With over 4 years of experience driving digital transformation, I help organizations optimize processes, enhance user adoption, and unlock the full potential of their Salesforce ecosystem.
+                            With over 5 years of experience driving digital transformation, I help organizations optimize processes, enhance user adoption, and unlock the full potential of their Salesforce ecosystem.
                         </p>
                         <div class="flex flex-wrap gap-4">
                             <a href="#contact" class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
@@ -218,7 +216,7 @@ app.get('/', (c) => {
                     <div class="hidden md:block">
                         <div class="relative">
                             <div class="float">
-                                <img src="https://www.genspark.ai/api/files/s/6M7FSqDf" alt="Nuratullahi Ashade-Ogunfuwa" class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                                <img src="https://www.genspark.ai/api/files/s/t4zBkd5w" alt="Nuratullahi Ashade-Ogunfuwa" class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
                             </div>
                         </div>
                     </div>
@@ -227,17 +225,14 @@ app.get('/', (c) => {
                 <!-- Value Proposition Pills -->
                 <div class="grid md:grid-cols-3 gap-6 mt-16">
                     <div class="glass-effect rounded-2xl p-6 text-center">
-                        <div class="text-5xl mb-4">🎯</div>
                         <h3 class="text-xl font-bold mb-2">Strategic Business Analysis</h3>
                         <p class="text-white/80">I dive deep into understanding your business operations, identifying inefficiencies, and translating complex needs into actionable solutions.</p>
                     </div>
                     <div class="glass-effect rounded-2xl p-6 text-center">
-                        <div class="text-5xl mb-4">⚙️</div>
                         <h3 class="text-xl font-bold mb-2">Salesforce Implementation Excellence</h3>
                         <p class="text-white/80">Certified Salesforce Administrator and Service Cloud Consultant delivering optimized, automated workflows that drive productivity.</p>
                     </div>
                     <div class="glass-effect rounded-2xl p-6 text-center">
-                        <div class="text-5xl mb-4">📊</div>
                         <h3 class="text-xl font-bold mb-2">Data-Driven Decision Making</h3>
                         <p class="text-white/80">Leveraging data analysis, reporting, and dashboards to provide insights that empower informed decisions.</p>
                     </div>
@@ -259,13 +254,13 @@ app.get('/', (c) => {
                 
                 <div class="grid md:grid-cols-2 gap-12 mb-16">
                     <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8">
-                        <h3 class="heading-font text-3xl font-bold mb-6 text-gray-900">My Story</h3>
+                        <h3 class="heading-font text-3xl font-bold mb-6 text-gray-900">About Me</h3>
                         <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
                             <p>
                                 My journey into Business Analysis and Salesforce consulting began with a fundamental question: <span class="font-semibold text-blue-600">How can technology truly serve business needs rather than complicate them?</span>
                             </p>
                             <p>
-                                Starting my career managing operations at D'light Fashion Hub, I discovered my talent for identifying process inefficiencies and implementing data-driven solutions that delivered measurable results. This experience ignited my passion for business optimization.
+                                Starting my career as a scientist researcher, I discovered my talent for identifying process inefficiencies and implementing data-driven solutions that delivered measurable results. This experience ignited my passion for business optimization.
                             </p>
                             <p>
                                 Over the past five years, I've had the privilege of working across diverse industries—from fashion retail to academic research, basketball operations to cloud consulting—each experience sharpening my ability to adapt, analyze, and deliver solutions that matter.
@@ -276,43 +271,23 @@ app.get('/', (c) => {
                     <div class="space-y-6">
                         <h3 class="heading-font text-3xl font-bold mb-6 text-gray-900">What Drives Me</h3>
                         <div class="bg-white border-l-4 border-blue-600 rounded-lg p-6 shadow-lg">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">🔍</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Curiosity & Analysis</h4>
-                                    <p class="text-gray-700">I'm energized by complex business challenges. Give me a tangled process, and I'll uncover the root cause and design a better future state.</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Curiosity & Analysis</h4>
+                            <p class="text-gray-700">I'm energized by complex business challenges. Give me a tangled process, and I'll uncover the root cause and design a better future state.</p>
                         </div>
                         
                         <div class="bg-white border-l-4 border-purple-600 rounded-lg p-6 shadow-lg">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">🤝</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Stakeholder Empowerment</h4>
-                                    <p class="text-gray-700">Great solutions emerge from meaningful collaboration. I invest time in understanding perspectives and ensuring every voice is heard.</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Stakeholder Empowerment</h4>
+                            <p class="text-gray-700">Great solutions emerge from meaningful collaboration. I invest time in understanding perspectives and ensuring every voice is heard.</p>
                         </div>
                         
                         <div class="bg-white border-l-4 border-blue-600 rounded-lg p-6 shadow-lg">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">📈</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Measurable Impact</h4>
-                                    <p class="text-gray-700">Every project is guided by one principle: create tangible, measurable value that moves the needle.</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Measurable Impact</h4>
+                            <p class="text-gray-700">Every project is guided by one principle: create tangible, measurable value that moves the needle.</p>
                         </div>
                         
                         <div class="bg-white border-l-4 border-purple-600 rounded-lg p-6 shadow-lg">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">🎓</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Continuous Growth</h4>
-                                    <p class="text-gray-700">Constantly expanding my knowledge—multiple Salesforce certifications and staying current with Agile methodologies.</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Continuous Growth</h4>
+                            <p class="text-gray-700">Constantly expanding my knowledge—multiple Salesforce certifications and staying current with Agile methodologies.</p>
                         </div>
                     </div>
                 </div>
@@ -589,9 +564,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <div class="bg-blue-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
-                            <i class="fas fa-project-diagram text-white text-3xl"></i>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop" alt="Salesforce Implementation" class="w-full h-48 object-cover rounded-2xl mb-6">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation Project</h3>
                         <p class="text-gray-700 mb-6">
                             Led comprehensive Salesforce Sales Cloud implementation for a growing organization, conducting requirements gathering, stakeholder workshops, and UAT coordination. Delivered automated workflows that improved operational efficiency by 30%.
@@ -614,9 +587,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <div class="bg-purple-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
-                            <i class="fas fa-chart-line text-white text-3xl"></i>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" alt="CRM Optimization" class="w-full h-48 object-cover rounded-2xl mb-6">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">CRM Optimization & Automation</h3>
                         <p class="text-gray-700 mb-6">
                             Conducted comprehensive CRM health check and process optimization for an organization struggling with low user adoption. Redesigned workflows, implemented automation, and delivered training that resulted in 40% increase in user engagement.
@@ -639,9 +610,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <div class="bg-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
-                            <i class="fas fa-tasks text-white text-3xl"></i>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop" alt="Digital Transformation" class="w-full h-48 object-cover rounded-2xl mb-6">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Digital Transformation & Solution Architecture</h3>
                         <p class="text-gray-700 mb-6">
                             Served as <span class="font-bold text-green-700">Project Lead and Solution Architect</span> for a complex digital transformation initiative involving multiple stakeholder groups. Led end-to-end solution design, architecture decisions, requirements workshops, and facilitated consensus-building across siloed departments while ensuring technical feasibility and alignment with business goals.
@@ -664,9 +633,7 @@ app.get('/', (c) => {
                                 View Full Case Study
                             </a>
                         </div>
-                        <div class="bg-orange-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
-                            <i class="fas fa-database text-white text-3xl"></i>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Data Analytics" class="w-full h-48 object-cover rounded-2xl mb-6">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Salesforce Implementation & Analytics</h3>
                         <p class="text-gray-700 mb-6">
                             Served as <span class="font-bold text-orange-700">Project Lead and Implementation Consultant</span> for comprehensive Salesforce deployment. Led project planning, stakeholder coordination, and technical implementation while designing executive dashboards for real-time business performance visibility. Created custom reports, KPI dashboards, and automated data refresh processes.
@@ -684,183 +651,6 @@ app.get('/', (c) => {
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="heading-font text-5xl font-bold text-gray-900 mb-4">
-                        A Comprehensive Toolkit for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Business & Technology</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        My expertise spans business analysis methodologies, Salesforce administration, data analysis, and stakeholder management
-                    </p>
-                </div>
-                
-                <!-- Salesforce Certifications -->
-                <div class="mb-16">
-                    <h3 class="heading-font text-3xl font-bold text-gray-900 mb-8 text-center">Salesforce Certifications</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://partner-learning-dev-salesforce-com.translate.goog/resource/blob/1700752449000/a54e2e8e5f1e06ccc9829c5e0ec99e7a4e4bfa25ed37e4bb6833d6d96c64ff51/administrator-badge.png?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" alt="Salesforce Administrator" class="w-full h-auto mb-4" onerror="this.src='https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg'">
-                            <p class="font-semibold text-gray-900 text-sm">Administrator</p>
-                        </div>
-                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <img src="https://partner-learning-dev-salesforce-com.translate.goog/resource/blob/1700752453000/6bcb24fdbd1a03ef40e5f3f22f12f7e5a6fb19f0c92f9c5c0c2e754758f6a551/service-cloud-consultant-badge.png?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" alt="Service Cloud Consultant" class="w-full h-auto mb-4" onerror="this.src='https://www.salesforce.com/content/dam/web/en_us/www/images/nav/logo-salesforce.svg'">
-                            <p class="font-semibold text-gray-900 text-sm">Service Cloud Consultant</p>
-                        </div>
-                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                                <i class="fas fa-robot text-white text-4xl"></i>
-                            </div>
-                            <p class="font-semibold text-gray-900 text-sm">Agentforce Specialist</p>
-                        </div>
-                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
-                                <i class="fas fa-brain text-white text-4xl"></i>
-                            </div>
-                            <p class="font-semibold text-gray-900 text-sm">AI Associate</p>
-                        </div>
-                        <div class="skill-badge bg-white rounded-2xl p-6 shadow-lg text-center">
-                            <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-cyan-600 rounded-full flex items-center justify-center">
-                                <i class="fas fa-certificate text-white text-4xl"></i>
-                            </div>
-                            <p class="font-semibold text-gray-900 text-sm">Salesforce Associate</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Core Competencies -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Business Analysis -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-4xl mb-4 text-center">🎯</div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Business Analysis</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>Requirements Management</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>Process Mapping (AS-IS/TO-BE)</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>Gap Analysis</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>Stakeholder Engagement</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>User Stories & Use Cases</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-blue-600 mt-1"></i>
-                                <span>Agile & Scrum</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Salesforce Technical -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-4xl mb-4 text-center">⚙️</div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Salesforce Skills</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>Sales Cloud & Service Cloud</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>Flow Builder & Process Builder</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>Lightning Experience</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>User & Permission Management</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>Custom Objects & Fields</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-purple-600 mt-1"></i>
-                                <span>Reports & Dashboards</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Data Analysis -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-4xl mb-4 text-center">📊</div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Data Analysis</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>Microsoft Excel (Advanced)</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>Data Visualization</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>KPI Tracking</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>Trend Analysis</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>Data Quality Management</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-600 mt-1"></i>
-                                <span>Executive Reporting</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Tools & Soft Skills -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-4xl mb-4 text-center">🛠️</div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Tools & Soft Skills</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>JIRA & Confluence</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>Visio, Miro, Draw.io</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>Microsoft Office Suite</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>Excellent Communication</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>Problem Solving</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-orange-600 mt-1"></i>
-                                <span>Team Collaboration</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 bg-white">
@@ -1003,39 +793,24 @@ app.get('/', (c) => {
                             </div>
                             
                             <div class="bg-white rounded-2xl p-6 shadow-lg">
-                                <div class="flex items-start gap-4">
-                                    <div class="text-4xl">📋</div>
-                                    <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Project-Based Engagement</h4>
-                                        <p class="text-gray-700">
-                                            Need support for a specific initiative? I offer project-based consulting for Salesforce implementations, process optimization, and UAT coordination.
-                                        </p>
-                                    </div>
-                                </div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">Project-Based Engagement</h4>
+                                <p class="text-gray-700">
+                                    Need support for a specific initiative? I offer project-based consulting for Salesforce implementations, process optimization, and UAT coordination.
+                                </p>
                             </div>
                             
                             <div class="bg-white rounded-2xl p-6 shadow-lg">
-                                <div class="flex items-start gap-4">
-                                    <div class="text-4xl">🤝</div>
-                                    <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Contract & Ongoing Support</h4>
-                                        <p class="text-gray-700">
-                                            Looking for extended support? I provide contract-based business analysis and Salesforce administration services.
-                                        </p>
-                                    </div>
-                                </div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">Contract & Ongoing Support</h4>
+                                <p class="text-gray-700">
+                                    Looking for extended support? I provide contract-based business analysis and Salesforce administration services.
+                                </p>
                             </div>
                             
                             <div class="bg-white rounded-2xl p-6 shadow-lg">
-                                <div class="flex items-start gap-4">
-                                    <div class="text-4xl">🎓</div>
-                                    <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Training & Workshops</h4>
-                                        <p class="text-gray-700">
-                                            Want to upskill your team? I deliver customized training on Salesforce best practices and business analysis techniques.
-                                        </p>
-                                    </div>
-                                </div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">Training & Workshops</h4>
+                                <p class="text-gray-700">
+                                    Want to upskill your team? I deliver customized training on Salesforce best practices and business analysis techniques.
+                                </p>
                             </div>
                         </div>
                         
