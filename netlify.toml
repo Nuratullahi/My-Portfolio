@@ -1,0 +1,9 @@
+[build]
+  # No build command needed - we're deploying static HTML
+  command = "echo 'No build needed'"
+  publish = "."
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
